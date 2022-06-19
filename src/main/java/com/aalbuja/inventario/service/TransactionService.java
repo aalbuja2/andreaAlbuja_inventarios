@@ -29,7 +29,6 @@ public class TransactionService {
     @Autowired
     ProductRepository productRepository;
 
-    //Create
     public List<Transaction> save( List<Transaction> transactions) throws Exception {
 
         List<Transaction> listProcess = new ArrayList<>();

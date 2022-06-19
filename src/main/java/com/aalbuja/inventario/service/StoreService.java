@@ -15,10 +15,7 @@ public class StoreService {
     @Autowired
     StoreRepository storeRepository;
 
-
-    // READ
     public List<Store> getAllStore() {
         return storeRepository.findAll();
     }
-
 }

@@ -14,22 +14,18 @@ public class ClientService {
     @Autowired
     ClientRepository cliRepository;
 
-    // CREATE
     public Client createClient(Client cli) {
         return cliRepository.save(cli);
     }
 
-    // READ
     public List<Client> getAllClient() {
         return cliRepository.findAll();
     }
 
-    // DELETE
     public void deleteClient(Integer cliId) {
         cliRepository.deleteById(cliId);
     }
 
-    // UPDATE
     public Client updateClient(Integer cliId, Client cliDetails) {
         Client client = cliRepository.findById(cliId).get();
         client.setNombres(cliDetails.getNombres());

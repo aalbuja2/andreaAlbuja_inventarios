@@ -12,7 +12,7 @@ public class StoreProductService {
     @Autowired
     StoreProductRepository storeProductRepository;
 
-    //Create
+
     public StoreProduct assignStoreProduct(StoreProduct storeProduct) {
         return storeProductRepository.save(storeProduct);
     }

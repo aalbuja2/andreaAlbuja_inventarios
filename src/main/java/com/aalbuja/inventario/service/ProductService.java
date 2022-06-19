@@ -14,17 +14,14 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    // CREATE
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    // READ
     public List<Product> getAllProduct() {
         return productRepository.findAll();
     }
 
-    // UPDATESTOCK
     public Product updateStockProduct(Integer prdId, Integer stock) {
         Product product = productRepository.findById(prdId).get();
         product.setStock(stock);
