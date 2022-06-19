@@ -1,6 +1,6 @@
 # APP INVENTARIOS
 
-El objetivo de esta aplicación es la géstión del inventario
+El objetivo de esta aplicación es la gestión del inventario
 para el control de esxistencia de stock de productos, el registro de
 transacciones y de clientes mediante el uso de SpringBoot, Java y MySql.
 
@@ -15,8 +15,8 @@ transacciones y de clientes mediante el uso de SpringBoot, Java y MySql.
 - Spring Web
 - MySQL Driver
 
-Para el desarrollo de la aplicación de gestión de requisitos se ha levantado una base de datos con el motor de MySQL
-el cual consta de las siguientes tablas
+Para el desarrollo de la aplicación de gestión de inventario se ha levantado una base de datos con el motor de MySQL
+el cual consta de las siguientes tablas:
 - producto
 - cliente
 - tienda
@@ -25,7 +25,7 @@ el cual consta de las siguientes tablas
 
 ![Modelo de Base de datos](Modelo.png)
 
-La estructura de los paquetes de los archivo fuente de la aplicacion son los siguientes
+La estructura de los paquetes de los archivo fuente de la aplicacion son los siguientes:
 
 ```
 main
@@ -49,7 +49,7 @@ test
 ````
 
 Para probar los servicios que han sido levantados han creado mediante Postman en donde se describen los
-servicios creados para las diferentes entidades de producto, tienda, pedido, cliente
+servicios creados para las diferentes entidades de producto, tienda, pedido, cliente.
 
 ![Servicios](PostmanServicios.png)
 
@@ -62,4 +62,4 @@ Ademas, mediante Postman en MockServer se simula el consumo de este servicio med
 
 ![Mock Clientes](MockClientes.png)
 
-Para finalizar en la aplicacion se han incluido las prubas unitarias y de integracion para validar su funcionalidad
+Para finalizar en la aplicacion se han incluido las prubas unitarias y de integracion para validar su funcionalidad.
