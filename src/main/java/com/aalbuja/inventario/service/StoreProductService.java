@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class StoreProductService {
     @Autowired
     StoreProductRepository storeProductRepository;
-    
+
     public StoreProduct assignStoreProduct(StoreProduct storeProduct) {
         StoreProduct obj= storeProductRepository.save(storeProduct);
         obj.getProduct().setStoreProducts(null);

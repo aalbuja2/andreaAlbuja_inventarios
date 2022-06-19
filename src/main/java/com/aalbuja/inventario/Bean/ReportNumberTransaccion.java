@@ -9,6 +9,15 @@ public class ReportNumberTransaccion {
     private String storeName;
     private LocalDate date;
 
+    public ReportNumberTransaccion() {
+    }
+
+    public ReportNumberTransaccion(String number, String storeName, LocalDate date) {
+        this.number = number;
+        this.storeName = storeName;
+        this.date = date;
+    }
+
     public String getNumber() {
         return number;
     }
