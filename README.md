@@ -62,4 +62,5 @@ Ademas, mediante Postman en MockServer se simula el consumo de este servicio med
 
 ![Mock Clientes](MockClientes.png)
 
-Para finalizar en la aplicacion se han incluido las prubas unitarias y de integracion para validar su funcionalidad.
+Para finalizar en la aplicacion se han incluido las pruebas unitarias y de integracion para validar su funcionalidad.
+![Pruebas Unitarias](EjecucionPruebasUnitarias.png)
