@@ -1,15 +1,14 @@
 package com.aalbuja.inventario.controller;
 
 
-import com.aalbuja.inventario.Bean.ReportAmoutByStore;
-import com.aalbuja.inventario.Bean.ReportNumberTransaccion;
+import com.aalbuja.inventario.bean.ReportAmoutByStore;
+import com.aalbuja.inventario.bean.ReportNumberTransaccion;
 import com.aalbuja.inventario.model.Transaction;
 import com.aalbuja.inventario.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 

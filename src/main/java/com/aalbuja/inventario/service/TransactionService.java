@@ -1,8 +1,8 @@
 package com.aalbuja.inventario.service;
 
 
-import com.aalbuja.inventario.Bean.ReportAmoutByStore;
-import com.aalbuja.inventario.Bean.ReportNumberTransaccion;
+import com.aalbuja.inventario.bean.ReportAmoutByStore;
+import com.aalbuja.inventario.bean.ReportNumberTransaccion;
 import com.aalbuja.inventario.model.Product;
 import com.aalbuja.inventario.model.Transaction;
 import com.aalbuja.inventario.repository.ProductRepository;

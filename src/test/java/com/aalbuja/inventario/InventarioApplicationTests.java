@@ -1,6 +1,5 @@
 package com.aalbuja.inventario;
 
-import com.aalbuja.inventario.handler.ControllerExceptionHandler;
 import com.aalbuja.inventario.model.Client;
 import com.aalbuja.inventario.model.Product;
 import com.aalbuja.inventario.model.Store;
@@ -16,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -67,5 +65,8 @@ class InventarioApplicationTests {
 			assertEquals("Unidades No disponibles (Mayor a 10)",e.getMessage());
 		}
 	}
+
+	//Pruebas de Integracion
+
 
 }

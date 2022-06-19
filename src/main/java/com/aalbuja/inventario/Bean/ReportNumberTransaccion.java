@@ -1,6 +1,5 @@
-package com.aalbuja.inventario.Bean;
+package com.aalbuja.inventario.bean;
 
-import java.math.BigInteger;
 import java.time.LocalDate;
 
 public class ReportNumberTransaccion {

@@ -1,4 +1,4 @@
-package com.aalbuja.inventario.Bean;
+package com.aalbuja.inventario.bean;
 
 import java.math.BigDecimal;
 

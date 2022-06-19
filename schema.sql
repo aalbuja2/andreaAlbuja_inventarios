@@ -64,6 +64,50 @@ CREATE TABLE `tienda` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tienda_producto`
+--
+
+DROP TABLE IF EXISTS `tienda_producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tienda_producto` (
+  `tienda_id` int NOT NULL,
+  `producto_id` int NOT NULL,
+  `fecha` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`tienda_id`,`producto_id`),
+  KEY `producto_id_idx` (`producto_id`),
+  CONSTRAINT `idx_producto_id` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`),
+  CONSTRAINT `idx_tienda_id` FOREIGN KEY (`tienda_id`) REFERENCES `tienda` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `transaccion`
+--
+
+DROP TABLE IF EXISTS `transaccion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `transaccion` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cantidad` int NOT NULL,
+  `precio` decimal(6,2) DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `hora` datetime NOT NULL,
+  `cliente_id` int NOT NULL,
+  `tienda_id` int NOT NULL,
+  `producto_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cliente_id_idx` (`cliente_id`),
+  KEY `producto_id_idx` (`producto_id`),
+  KEY `tienda_id_idx` (`tienda_id`),
+  CONSTRAINT `cliente_id_fx` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`),
+  CONSTRAINT `producto_id_fx` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`),
+  CONSTRAINT `tienda_id_fx` FOREIGN KEY (`tienda_id`) REFERENCES `tienda` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -74,4 +118,4 @@ CREATE TABLE `tienda` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-18 11:28:48
+-- Dump completed on 2022-06-19 14:40:56
