@@ -13,6 +13,9 @@ public class StoreProductKey implements Serializable {
     @Column(name = "tienda_id")
     private Integer storeId;
 
+    public StoreProductKey() {
+    }
+
     public Integer getProductId() {
         return productId;
     }

@@ -1,8 +1,6 @@
 package com.aalbuja.inventario.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,13 +15,25 @@ public class Store implements Serializable  {
     private Integer id;
 
     @Column(name="nombre")
-    private String Nombre;
+    private String nombre;
 
     @OneToMany(mappedBy = "product")
     private Set<StoreProduct> storeProducts;
 
     @OneToMany(mappedBy = "store")
     private Set<Transaction> transactionSet;
+
+    public Store() {
+
+    }
+
+    public Store(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Store(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -34,11 +44,11 @@ public class Store implements Serializable  {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public Set<StoreProduct> getStoreProducts() {

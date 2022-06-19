@@ -1,7 +1,5 @@
 package com.aalbuja.inventario.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,19 +15,33 @@ public class Client implements Serializable {
     private Integer id;
 
     @Column(name="nombres")
-    private String Nombres;
+    private String nombres;
 
     @Column(name="apellidos")
-    private String Apellidos;
+    private String apellidos;
 
     @Column(name="identificacion")
-    private String Identificacion;
+    private String identificacion;
 
     @Column(name="foto")
-    private String Foto;
+    private String foto;
 
     @OneToMany(mappedBy = "client")
     private Set<Transaction> transactionSet;
+
+    public Client() {
+    }
+
+    public Client(String nombres, String apellidos, String identificacion, String foto) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.identificacion = identificacion;
+        this.foto = foto;
+    }
+
+    public Client(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -40,35 +52,35 @@ public class Client implements Serializable {
     }
 
     public String getNombres() {
-        return Nombres;
+        return nombres;
     }
 
     public void setNombres(String nombres) {
-        Nombres = nombres;
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
-        return Apellidos;
+        return apellidos;
     }
 
     public void setApellidos(String apellidos) {
-        Apellidos = apellidos;
+        this.apellidos = apellidos;
     }
 
     public String getIdentificacion() {
-        return Identificacion;
+        return identificacion;
     }
 
     public void setIdentificacion(String identificacion) {
-        Identificacion = identificacion;
+        this.identificacion = identificacion;
     }
 
     public String getFoto() {
-        return Foto;
+        return foto;
     }
 
     public void setFoto(String foto) {
-        Foto = foto;
+        this.foto = foto;
     }
 
     public Set<Transaction> getTransactionSet() {

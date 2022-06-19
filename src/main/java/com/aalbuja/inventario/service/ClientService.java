@@ -1,6 +1,7 @@
 package com.aalbuja.inventario.service;
 
 import com.aalbuja.inventario.model.Client;
+import com.aalbuja.inventario.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,11 @@ public class ClientService {
     }
 
     public List<Client> getAllClient() {
-        return cliRepository.findAll();
+        List<Client> list = cliRepository.findAll();
+        list.forEach(x->{
+            x.setTransactionSet(null);
+        });
+        return list;
     }
 
     public void deleteClient(Integer cliId) {
@@ -32,7 +37,9 @@ public class ClientService {
         client.setApellidos(cliDetails.getApellidos());
         client.setIdentificacion(cliDetails.getIdentificacion());
         client.setFoto(cliDetails.getFoto());
-        return cliRepository.save(client);
+        Client obj =cliRepository.save(client);
+        obj.setTransactionSet(null);
+        return obj;
     }
 
 }

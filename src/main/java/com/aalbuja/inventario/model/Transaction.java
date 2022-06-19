@@ -47,6 +47,15 @@ public class Transaction implements Serializable  {
         this.date = LocalDate.now();
     }
 
+    public Transaction(Integer amount, Store store, Client client, Product product) {
+        this.amount = amount;
+        this.store = store;
+        this.client = client;
+        this.product = product;
+        this.hour = LocalDateTime.now();
+        this.date = LocalDate.now();
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,7 +1,5 @@
 package com.aalbuja.inventario.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,16 +15,16 @@ public class Product implements Serializable {
     private Integer id;
 
     @Column(name="codigo")
-    private String Cod;
+    private String cod;
 
     @Column(name="nombre")
-    private String Name;
+    private String name;
 
     @Column(name="precio")
-    private Double Price;
+    private Double price;
 
     @Column(name="stock")
-    private Integer Stock;
+    private Integer stock;
 
     @OneToMany(mappedBy = "store")
     private Set<StoreProduct> storeProducts;
@@ -34,6 +32,24 @@ public class Product implements Serializable {
 
     @OneToMany(mappedBy = "product")
     private Set<Transaction> transactionSet;
+
+
+    public Product() {
+
+    }
+
+    public Product(String cod, String name, Double price, Integer stock) {
+        this.cod = cod;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+
+
+
+    public Product(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -44,35 +60,35 @@ public class Product implements Serializable {
     }
 
     public String getCod() {
-        return Cod;
+        return cod;
     }
 
     public void setCod(String cod) {
-        Cod = cod;
+        this.cod = cod;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(Double price) {
-        Price = price;
+        this.price = price;
     }
 
     public Integer getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(Integer stock) {
-        Stock = stock;
+        this.stock = stock;
     }
 
 
