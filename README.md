@@ -48,8 +48,8 @@ test
 
 ````
 
-Para probar los servicios que han sido levantados han creado mediante Postman en donde se describen los
-servicios creados para las diferentes entidades de producto, tienda, pedido, cliente.
+Para probar los servicios que han sido levantados se han creado las peticiones mediante Postman para las
+diferentes entidades de producto, tienda, pedido, cliente.
 
 ![Servicios](PostmanServicios.png)
 
