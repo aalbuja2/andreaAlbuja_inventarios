@@ -8,11 +8,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.JoinColumn;
 import javax.persistence.EmbeddedId;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tienda_producto")
-public class StoreProduct {
+public class StoreProduct implements Serializable {
 
     @EmbeddedId
     StoreProductKey id;

@@ -1,12 +1,15 @@
 package com.aalbuja.inventario.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name="tienda")
-public class Store {
+public class Store implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +22,7 @@ public class Store {
     @OneToMany(mappedBy = "product")
     private Set<StoreProduct> storeProducts;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "store")
     private Set<Transaction> transactionSet;
 
     public Integer getId() {

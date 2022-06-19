@@ -12,6 +12,8 @@ import com.aalbuja.inventario.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -90,6 +92,20 @@ public class TransactionService {
             }
         }
         return out;
+    }
+
+    public List<Transaction> transactionByClient(Integer id, String starDate, String endDate){
+        List<Transaction> list =transactionRepository.transactionByClient(id,starDate,endDate);
+
+        list.forEach(x->{
+            x.getStore().setTransactionSet(null);
+            x.getStore().setStoreProducts(null);
+            x.getClient().setTransactionSet(null);
+            x.getProduct().setTransactionSet(null);
+            x.getProduct().setStoreProducts(null);
+        });
+
+        return list;
     }
 
 

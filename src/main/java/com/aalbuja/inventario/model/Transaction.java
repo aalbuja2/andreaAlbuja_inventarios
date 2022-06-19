@@ -1,13 +1,14 @@
 package com.aalbuja.inventario.model;
 
+
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name= "transaccion")
-public class Transaction {
+public class Transaction implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +28,16 @@ public class Transaction {
     @Column(name="hora")
     private LocalDateTime hour;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "tienda_id",nullable = false)
     Store store;
 
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id",nullable = false)
     Client client;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "producto_id",nullable = false)
     Product product;
 

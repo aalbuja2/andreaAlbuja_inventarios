@@ -6,12 +6,13 @@ import com.aalbuja.inventario.Bean.ReportNumberTransaccion;
 import com.aalbuja.inventario.model.Transaction;
 import com.aalbuja.inventario.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api")
@@ -35,4 +36,13 @@ public class OrderController {
     public List<ReportAmoutByStore> reportAmountByStore() {
         return transactionService.reportAmounByStore();
     }
+
+    @RequestMapping(value="/order/{cliId}/{startDate}/{endDate}", method=RequestMethod.GET)
+    public List<Transaction> transacctionByClient(@PathVariable(value = "cliId") Integer id,
+                                     @PathVariable(value = "startDate") String startDate,
+                                     @PathVariable(value = "endDate") String endDate) throws IOException {
+
+        return transactionService.transactionByClient(id,startDate,endDate);
+    }
+
 }

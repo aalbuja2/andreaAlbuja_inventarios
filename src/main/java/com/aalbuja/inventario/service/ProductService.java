@@ -19,15 +19,24 @@ public class ProductService {
     }
 
     public List<Product> getAllProduct() {
+        List<Product> list = productRepository.findAll();
+        list.forEach(x->{
+            x.setTransactionSet(null);
+            x.setStoreProducts(null);
+        });
         return productRepository.findAll();
     }
 
     public Product updateStockProduct(Integer prdId, Integer stock) {
         Product product = productRepository.findById(prdId).get();
         product.setStock(stock);
-        return productRepository.save(product);
+        Product obj= productRepository.save(product);
+        obj.setTransactionSet(null);
+        obj.setStoreProducts(null);
+        return obj;
     }
     public Product getProductById(Integer prdId) {
+
         return productRepository.findById(prdId).get();
     }
 }
