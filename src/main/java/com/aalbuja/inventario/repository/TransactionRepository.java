@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface  TransactionRepository extends JpaRepository<Transaction,Integer> {
 
-    @Query (value = "select count(*), t.nombre,fecha  from transaccion,tienda t where tienda_id = t.id group by tienda_id,fecha",nativeQuery = true)
+    @Query (value = "select count(*) as numero, t.nombre,fecha  from transaccion,tienda t where tienda_id = t.id group by tienda_id,fecha",nativeQuery = true)
     List<Object[]> numberTransacction();
 
 

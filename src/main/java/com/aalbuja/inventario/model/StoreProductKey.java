@@ -8,10 +8,10 @@ import java.io.Serializable;
 public class StoreProductKey implements Serializable {
 
     @Column(name = "producto_id")
-    Integer productId;
+    private Integer productId;
 
     @Column(name = "tienda_id")
-    Integer storeId;
+    private Integer storeId;
 
     public Integer getProductId() {
         return productId;

@@ -3,8 +3,11 @@ package com.aalbuja.inventario.service;
 
 import com.aalbuja.inventario.Bean.ReportAmoutByStore;
 import com.aalbuja.inventario.Bean.ReportNumberTransaccion;
-import com.aalbuja.inventario.model.Store;
+import com.aalbuja.inventario.model.Product;
 import com.aalbuja.inventario.model.Transaction;
+import com.aalbuja.inventario.repository.ClientRepository;
+import com.aalbuja.inventario.repository.ProductRepository;
+import com.aalbuja.inventario.repository.StoreRepository;
 import com.aalbuja.inventario.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +23,41 @@ public class TransactionService {
     @Autowired
     TransactionRepository transactionRepository;
 
+    @Autowired
+    ProductService prdService;
+
+    @Autowired
+    ProductRepository productRepository;
+
     //Create
-    public List<Transaction> save(List<Transaction> transactions) {
+    public List<Transaction> save( List<Transaction> transactions) throws Exception {
 
-
-
-
-        return transactionRepository.saveAll(transactions);
+        List<Transaction> listProcess = new ArrayList<>();
+        transactions.forEach(x->{
+            Product product = productRepository.findById(x.getProduct().getId()).get();
+            x.setPrice(product.getPrice());
+            Integer faltante = (product.getStock() - x.getAmount())*-1;
+            if (faltante >10){
+                try {
+                    throw new Exception("Unidades No disponibles (Mayor a 10)");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else if (faltante >5){
+                transactionRepository.save(x);
+                prdService.updateStockProduct(product.getId(),((product.getStock()+10)-x.getAmount()));
+                listProcess.add(x);
+            }else if(faltante >=0){
+                transactionRepository.save(x);
+                prdService.updateStockProduct(product.getId(),((product.getStock()+5)-x.getAmount()));
+                listProcess.add(x);
+            }else{
+                transactionRepository.save(x);
+                prdService.updateStockProduct(product.getId(),((product.getStock())-x.getAmount()));
+                listProcess.add(x);
+            }
+        });
+        return  listProcess;
     }
 
 
@@ -37,7 +68,7 @@ public class TransactionService {
             ReportNumberTransaccion numberTransaccion = null;
             for (Object[] object : list) {
                 numberTransaccion = new ReportNumberTransaccion();
-                numberTransaccion.setNumber(((BigInteger) object[1]).intValue());
+                numberTransaccion.setNumber(object[0].toString());
                 numberTransaccion.setStoreName(object[1].toString());
                 numberTransaccion.setDate(LocalDate.parse(object[2].toString()));
                 out.add(numberTransaccion);
@@ -61,4 +92,6 @@ public class TransactionService {
         }
         return out;
     }
+
+
 }

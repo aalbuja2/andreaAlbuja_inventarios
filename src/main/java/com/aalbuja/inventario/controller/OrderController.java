@@ -1,7 +1,6 @@
 package com.aalbuja.inventario.controller;
 
 
-import com.aalbuja.inventario.Bean.Order;
 import com.aalbuja.inventario.Bean.ReportAmoutByStore;
 import com.aalbuja.inventario.Bean.ReportNumberTransaccion;
 import com.aalbuja.inventario.model.Transaction;
@@ -22,8 +21,9 @@ public class OrderController {
     TransactionService transactionService;
 
     @RequestMapping(value="/order", method= RequestMethod.POST)
-    public List<Transaction> createOrder(@RequestBody Order order) {
-        return transactionService.save(order.getTransactionList());
+    public List<Transaction> createOrder(@RequestBody List<Transaction> transactions) throws Exception {
+
+        return transactionService.save(transactions);
     }
 
     @RequestMapping(value="/order/numberTransaction", method= RequestMethod.GET)

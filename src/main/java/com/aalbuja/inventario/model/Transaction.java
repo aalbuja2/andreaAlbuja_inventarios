@@ -17,8 +17,8 @@ public class Transaction {
     @Column(name="cantidad")
     private Integer amount;
 
-    @Column(name="precio")
-    private BigDecimal price;
+    @Column(name="precio",nullable = true)
+    private Double price;
 
 
     @Column(name="fecha")
@@ -28,17 +28,16 @@ public class Transaction {
     private LocalDateTime hour;
 
     @ManyToOne
-    @JoinColumn(name = "tienda_id")
+    @JoinColumn(name = "tienda_id",nullable = false)
     Store store;
 
+
     @ManyToOne
-    @MapsId("storeId")
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id",nullable = false)
     Client client;
 
     @ManyToOne
-    @MapsId("storeId")
-    @JoinColumn(name = "producto_id")
+    @JoinColumn(name = "producto_id",nullable = false)
     Product product;
 
 
@@ -63,11 +62,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

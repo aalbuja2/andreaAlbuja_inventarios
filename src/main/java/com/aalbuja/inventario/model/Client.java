@@ -1,11 +1,7 @@
 package com.aalbuja.inventario.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
@@ -28,6 +24,9 @@ public class Client {
 
     @Column(name="foto")
     private String Foto;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Transaction> transactionSet;
 
     public Integer getId() {
         return id;
@@ -67,5 +66,13 @@ public class Client {
 
     public void setFoto(String foto) {
         Foto = foto;
+    }
+
+    public Set<Transaction> getTransactionSet() {
+        return transactionSet;
+    }
+
+    public void setTransactionSet(Set<Transaction> transactionSet) {
+        this.transactionSet = transactionSet;
     }
 }

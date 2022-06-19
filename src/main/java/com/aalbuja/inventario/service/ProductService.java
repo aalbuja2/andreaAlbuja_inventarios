@@ -24,10 +24,13 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    // UPDATE
+    // UPDATESTOCK
     public Product updateStockProduct(Integer prdId, Integer stock) {
         Product product = productRepository.findById(prdId).get();
         product.setStock(stock);
         return productRepository.save(product);
+    }
+    public Product getProductById(Integer prdId) {
+        return productRepository.findById(prdId).get();
     }
 }

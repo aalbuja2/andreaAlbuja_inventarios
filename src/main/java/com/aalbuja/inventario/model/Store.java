@@ -1,13 +1,7 @@
 package com.aalbuja.inventario.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -23,7 +17,10 @@ public class Store {
     private String Nombre;
 
     @OneToMany(mappedBy = "product")
-    Set<StoreProduct> storeProducts;
+    private Set<StoreProduct> storeProducts;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Transaction> transactionSet;
 
     public Integer getId() {
         return id;
@@ -47,5 +44,13 @@ public class Store {
 
     public void setStoreProducts(Set<StoreProduct> storeProducts) {
         this.storeProducts = storeProducts;
+    }
+
+    public Set<Transaction> getTransactionSet() {
+        return transactionSet;
+    }
+
+    public void setTransactionSet(Set<Transaction> transactionSet) {
+        this.transactionSet = transactionSet;
     }
 }

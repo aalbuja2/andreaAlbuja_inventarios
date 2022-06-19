@@ -1,18 +1,19 @@
 package com.aalbuja.inventario.Bean;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 public class ReportNumberTransaccion {
 
-    private Integer number;
+    private String number;
     private String storeName;
     private LocalDate date;
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
